@@ -1,0 +1,30 @@
+# MacOS stuff
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# thumbnails
+._*
+
+# files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# npm
+node_modules
+*.log
+
+# vagrant
+.vagrant
+.provision
+
+# bower
+src/bower-components
+
+# compiled python files
+*.pyc
+
+# project files
+dist
+src/config.js
+src/config/local.json

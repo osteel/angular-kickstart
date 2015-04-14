@@ -1,0 +1,10 @@
+- test the build [OK]
+- test the app [OK]
+- test build dist
+- list the items [OK]
+- links to load one [OK]
+- add some css (skeleton + app.css, concatenate etc) [OK]
+- live reload
+- readme
+- apiary (connect to github)
+- ngprogress [OK]

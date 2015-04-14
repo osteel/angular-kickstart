@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+    <head>
+        <title>Angular Kickstart</title>
+
+        <base href="/"/>
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+
+        <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
+
+        <!-- build:css({src,.tmp}) assets/css/app.min.css -->
+        <link rel="stylesheet" href="/vendor/Skeleton/css/normalize.css"/>
+        <link rel="stylesheet" href="/vendor/Skeleton/css/skeleton.css"/>
+        <link rel="stylesheet" href="/bower-components/ngprogress-lite/ngprogress-lite.css"/>
+        <link rel="stylesheet" href="/assets/css/app.css"/>
+        <!-- endbuild -->
+
+        <script type="text/javascript" src="//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+    </head>
+
+    <body ng-controller="AppController">
+
+        <div class="container">
+            <div ng-include src="'partials/layout/header.html'"></div>
+
+            <div ui-view></div>
+
+            <div ng-include src="'partials/layout/footer.html'"></div>
+        </div>
+
+        <!-- build:js({src,.tmp}) components/app.min.js -->
+        <script type="text/javascript" src="bower-components/lodash-compat/lodash.min.js"></script>
+        <script type="text/javascript" src="bower-components/moment/min/moment.min.js"></script>
+
+        <script type="text/javascript" src="bower-components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower-components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="bower-components/ngprogress-lite/ngprogress-lite.min.js"></script>
+        <script type="text/javascript" src="bower-components/restangular/dist/restangular.min.js"></script>
+
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="app-controller.js"></script>
+
+        <script type="text/javascript" src="components/common/common-constants.js"></script>
+        <script type="text/javascript" src="components/common/common-controllers.js"></script>
+        <script type="text/javascript" src="components/common/common-directives.js"></script>
+        <script type="text/javascript" src="components/common/common-filters.js"></script>
+        <script type="text/javascript" src="components/common/common-services.js"></script>
+
+        <script type="text/javascript" src="components/example/example-module.js"></script>
+        <script type="text/javascript" src="components/example/example-constants.js"></script>
+        <script type="text/javascript" src="components/example/example-controllers.js"></script>
+        <script type="text/javascript" src="components/example/example-data.js"></script>
+        <script type="text/javascript" src="components/example/example-directives.js"></script>
+        <script type="text/javascript" src="components/example/example-filters.js"></script>
+        <script type="text/javascript" src="components/example/example-services.js"></script>
+
+        <script type="text/javascript" src="components/example/subexample/subexample-module.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-constants.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-controllers.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-data.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-directives.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-filters.js"></script>
+        <script type="text/javascript" src="components/example/subexample/subexample-services.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
