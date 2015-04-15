@@ -1,67 +1,97 @@
-# Twilert Frontend
+# Angular Kickstart
 
-This is the Angular-based frontend for Twilert.
+My personal Angular project kickstart.
+
+## Features
+
+ - Modularized approach
+ - Configs for development, staging and production
+ - Livereload (development)
+ - Javascript concatenation/minification
+ - CSS concatenation/minification
+ - Asset revisioning
+ - html5mode routing
+ 
+Also incudes by default:
+    
+ - [AngularUI Router](https://github.com/angular-ui/ui-router)
+ - [Restangular](https://github.com/mgonto/restangular)
+ - [cssnext](https://cssnext.github.io/)
+ - [Skeleton](http://getskeleton.com/)
+ - [Modernizr](http://modernizr.com/)
+ - [Lodash](https://lodash.com/) (compat)
+ - [Moment.js](http://momentjs.com/)
+ - [ngProgressLite](http://labs.voronianski.com/ngprogress-lite.js/)
+
+## Requirements
+
+ - [npm](https://www.npmjs.com/) (and Node.js)
+ - [Grunt](http://gruntjs.com/)
+ - [Bower](http://bower.io/)
 
 ## Install
 
+Clone the project:
+
+	clone https://github.com/osteel/angular-kickstart.git
+    
+Then go to its root and run:
+
+	cd angular-kickstart
+    npm install
+    bower install
+
+### Vagrant
+
+As I like to use a separate Vagrant box for each of my projects, the kickstart comes with a Vagrant config file, including all of the requirements listed above. Simply clone the project and run from the root:
+
+	clone https://github.com/osteel/angular-kickstart.git
+	cd angular-kickstart
+    vagrant up
+    
+This will bring up and provision an Ubuntu 14.04.1 server (can take a while).
+    
+`ssh` the box and install the dependencies:
+
+    vagrant ssh
+    cd /var/www
+    sudo npm install
+    bower install
+    
+## Use
+
 ### Development
 
-Clone the repo and have a look at https://github.com/code/twilert-webapp/blob/master/.provision/bootstrap.sh to know about the required packages.
+Go to the project's root and run:
 
-To get started, run `npm install`, `bower install` and then `grunt dev`; the app will pop up at localhost:1337 by default (port collision management is activated - check what Vagrant says when "up"ing the machine).
+    grunt dev
+    
+Visit http://localhost:8888 when the tasks are done running. Livereload is set up by default so anytime you update an HTML, CSS or JS file, the website automatically refreshes itself.
 
-**Note:** if you are using a VM on a Windows host, you might need to run `npm install --no-bin-links` to prevent npm from trying to create symlinks.
+*Note:* if you use Vagrant, you might need to use a [browser extension](http://livereload.com/extensions/) as well.
 
-#### Vagrant
+When using the kickstart in development mode, files are served from the `src/` folder and aren't minified.
 
-You can use Vagrant to set up a VM. Install Vagrant ( http://www.vagrantup.com/downloads.html ) and a provider (like VirtualBox ( https://www.virtualbox.org/wiki/Downloads )), go to the project folder and:
+You will find an example module and a submodule into `src/components/`. [Apiary](https://apiary.io/) is used to mimic an [external API](http://docs.angularkickstart.apiary.io/) (see `src/components/example/example-data.js` for example calls).
 
-`vagrant up`
+### Staging and production
 
-ssh your VM, go to /var/www, run `npm install`, `bower install` and then `grunt dev`
+`grunt staging` and `grunt prod` will respectively run the project in staging and production modes, loading there own config in the process (see `src/config/`).
 
-#### Local
+Files are concatenated and minified and placed into `dist/`. That's the folder that should be served in production.
 
-This config is as part of getting the whole Twilert ecosystem running locally (the webapp, the backend and the Twitter Data Service).
+It is possible to test the staging config locally. Simply uncomment this line from `Gruntfile.js`:
 
-Create a local.json file under src/config. This file is deliberately ignored by git as most likely specific to each post. It looks like this:
+    ,"connect:staging"
+    
+Save and run:
 
-    {
-        "API_BASE_URL": "http://192.168.50.2:1338/api/",
-        "AUTH_BASE_URL": "http://192.168.50.2:1338/",
-        "MARKETING_WEBSITE_URL": "https://marketing.staging.twilert.com/",
-        "X_CLIENT_ID_HEADER": "web-development",
-        "INTERCOM_APP_ID": "8w0mpiy3"
-    }
+    grunt staging
+    
+You can now access http://localhost:8888 and use the website served from `dist/`.
 
-`"API_BASE_URL"` and `"AUTH_BASE_URL"` refer to the IP/port of the backend, as setup locally. Refer to https://github.com/code/twilert-backend for more details.
-The rest of the properties is of no importance.
+## To-do
 
-Finally, just run `grunt local` instead of `grunt dev`
-
-### Staging
-
-There's a fabric script to automate staging deployment:
-
-`fab deploy_staging` (from the project root)
-
-It will ssh *root@en.staging.twilert.com*, ensure whatever needed package is installed and pull the master branch.
-
-It will then install npm and bower dependencies and finally run `grunt staging` to generate the concatenated, uglified, minified... version.
-
-### Notes
-
-- grunt-contrib-stylus version is forced to 0.13.2 as the most recent version (0.17 at the time of writing) generates defective CSS files
-- all other npm packages' versions have been frozen as well by safety
-
-## Workflow
-
-GitHub Flow inspired: http://scottchacon.com/2011/08/31/github-flow.html
-
-- Branch out master
-- Develop a feature
-- Test the branch on staging if necessary, using `fab deploy_staging` (allows to choose a branch instead of just master)
-- Push the branch + PR if peer-review is wanted
-- Merge to master
-- Push to production using `fab deploy_production` => produces a tag with the current timestamp, allows to enter a description
-- In case of problem, rollback to a previous tag using `fab rollback_production` (allows to choose a tag)
+ - JSHint
+ - Testing
+ - Fabric

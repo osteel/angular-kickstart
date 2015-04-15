@@ -9,8 +9,9 @@ angular.module("app.subexampleModule", ["ui.router"])
         $stateProvider
             .state("example-subexample", {
                 url: "/example/subexample",
-                templateUrl: "partials/example/subexample/subexample.html",
-                controller: "SubexampleController"
+                templateUrl: "components/example/subexample/partials/subexample.html",
+                controller: "SubexampleController",
+                controllerAs: "subexample"
             })
         ;
   }])

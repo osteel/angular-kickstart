@@ -8,18 +8,19 @@ angular.module('app.subexampleModule')
     'SubexampleController',
     [
       '$log',
-      '$scope',
       'titleService',
       'subexampleData',
       
       function(
         $log,
-        $scope,
         titleService,
         subexampleData
       ) {
+        var vm = this;
         
         titleService.setTitle('Example - subexample - ');
+        
+        vm.aString2 = "Hello Universe!";
       }
     ]
   )

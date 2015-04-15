@@ -3,7 +3,7 @@
 /** 
  * The main app
  */
-var app = angular.module("app", [
+angular.module("app", [
     "restangular",
     "ui.router",
     "ngProgressLite",

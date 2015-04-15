@@ -24,16 +24,15 @@ angular.module("app.exampleModule")
                 items,
                 item
             ) {
+                var vm = this;
+        
                 titleService.setTitle("Example - ");
                 
-                // assign the list of items to the scope
-                $scope.items = items;
-
-                // assign the item to the scope
-                $scope.item = item;
-
-                // load another item
-                $scope.loadItem = function(id) {
+                vm.items = items;
+                vm.item = item;
+                vm.loadItem = loadItem;
+                
+                function loadItem(id) {
                     exampleData.getOne(id).then(
                         function(data) {
                             $window.alert("The Apiary mockup always returns the 'Fiorentina' item, but the request was for the item #" + id + ".");

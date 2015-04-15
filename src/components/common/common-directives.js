@@ -17,7 +17,6 @@ angular.module("app.directives", [])
             ) {
                 return {
                     restrict: "A", // attribute
-                    scope: {},
                     link: function($scope, element, attrs) {
                         $log.log("Common directive loaded.");
                     }

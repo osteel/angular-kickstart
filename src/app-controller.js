@@ -5,18 +5,18 @@ angular.module("app")
         "AppController",
         [
             "$log",
-            "$scope",
             "EXAMPLE",
 
             function(
                 $log,
-                $scope,
                 EXAMPLE
             ) {
+                var vm = this;
+        
                 $log.log("Main controller loaded.");
 
-                $scope.aString = "Hello World!";
-                $scope.aConstant = EXAMPLE;
+                vm.aString = "Hello World!";
+                vm.aConstant = EXAMPLE;
             }
         ]
     )

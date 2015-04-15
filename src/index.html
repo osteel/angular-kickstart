@@ -10,8 +10,8 @@
         <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
 
         <!-- build:css({src,.tmp}) assets/css/app.min.css -->
-        <link rel="stylesheet" href="/vendor/Skeleton/css/normalize.css"/>
-        <link rel="stylesheet" href="/vendor/Skeleton/css/skeleton.css"/>
+        <link rel="stylesheet" href="/bower-components/skeleton/css/normalize.css"/>
+        <link rel="stylesheet" href="/bower-components/skeleton/css/skeleton.css"/>
         <link rel="stylesheet" href="/bower-components/ngprogress-lite/ngprogress-lite.css"/>
         <link rel="stylesheet" href="/assets/css/app.css"/>
         <!-- endbuild -->
@@ -19,14 +19,14 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
     </head>
 
-    <body ng-controller="AppController">
+    <body ng-controller="AppController as app">
 
         <div class="container">
-            <div ng-include src="'partials/layout/header.html'"></div>
+            <div ng-include src="'components/common/partials/header.html'"></div>
 
             <div ui-view></div>
 
-            <div ng-include src="'partials/layout/footer.html'"></div>
+            <div ng-include src="'components/common/partials/footer.html'"></div>
         </div>
 
         <!-- build:js({src,.tmp}) components/app.min.js -->

@@ -1,6 +1,9 @@
 var modRewrite = require("connect-modrewrite");
 
 module.exports = function(grunt) {
+    
+    // load Grunt tasks declared in the package.json file
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
         connect: {
@@ -20,7 +23,8 @@ module.exports = function(grunt) {
             },
             dev: {
                 options: {
-                    base: "src"
+                    base: "src",
+                    livereload: true
                 }
             },
             staging: {
@@ -88,7 +92,7 @@ module.exports = function(grunt) {
             prod: {
                 expand: true,
                 cwd: "src/",
-                src: ["index.html", "assets/img/**", "partials/**", "!vendor/**", "!js/**", "!styl/**", "!config/**"],
+                src: ["index.html", "assets/img/**", "components/**/*.html", "!vendor/**", "!js/**", "!styl/**", "!config/**"],
                 dest: "dist/"
             }
         },
@@ -118,14 +122,29 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            stylus: {
-                files: ["src/styl/**/*.styl"],
-                tasks: ["stylus:dev"],
+            options: {
+                livereload: true
+            },
+            css: {
+                files: ["src/css/**/*.css"],
+                tasks: ["cssnext"],
                 options: {
                     livereload: true
                 }
             },
-            template_dev: {
+            js: {
+                files: ["src/components/**/*.js"],
+                options: {
+                    livereload: true
+                }
+            },
+            html: {
+                files: ["src/index.html", "src/components/**/*.html"],
+                options: {
+                    livereload: true
+                }
+            },
+            template: {
                 files: ["src/config/development.json", "src/config/config.js.tpl"],
                 tasks: ["template:dev"],
                 options: {
@@ -134,18 +153,6 @@ module.exports = function(grunt) {
             }
         }
     });
-
-    grunt.loadNpmTasks("grunt-contrib-copy");
-    grunt.loadNpmTasks("grunt-contrib-clean");
-    grunt.loadNpmTasks("grunt-contrib-concat");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
-    grunt.loadNpmTasks("grunt-contrib-cssmin");
-    grunt.loadNpmTasks("grunt-rev");
-    grunt.loadNpmTasks("grunt-usemin");
-    grunt.loadNpmTasks("grunt-cssnext")
-    grunt.loadNpmTasks("grunt-contrib-connect");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-template");
 
     grunt.registerTask(
         "dev",

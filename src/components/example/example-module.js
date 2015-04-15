@@ -10,8 +10,9 @@ angular.module("app.exampleModule", ["ui.router"])
         $stateProvider
             .state("example", {
                 url: "/example",
-                templateUrl: "partials/example/example.html",
+                templateUrl: "components/example/partials/example.html",
                 controller: "ExampleController",
+                controllerAs: "example",
                 resolve: {
                     items: ["exampleData", function(exampleData) {
                         return exampleData.getList();
