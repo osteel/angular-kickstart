@@ -33,7 +33,7 @@ Also incudes by default:
 
 Clone the project:
 
-	clone https://github.com/osteel/angular-kickstart.git
+	git clone git@github.com:osteel/angular-kickstart.git
     
 Then go to its root and run:
 
@@ -45,7 +45,7 @@ Then go to its root and run:
 
 As I like to use a separate Vagrant box for each of my projects, the kickstart comes with a Vagrant config file, including all of the requirements listed above. Simply clone the project and run from the root:
 
-	clone https://github.com/osteel/angular-kickstart.git
+	git clone git@github.com:osteel/angular-kickstart.git
 	cd angular-kickstart
     vagrant up
     
