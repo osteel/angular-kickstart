@@ -55,7 +55,7 @@ This will bring up and provision an Ubuntu 14.04.1 server (can take a while).
 
     vagrant ssh
     cd /var/www
-    npm install
+    sudo npm install
     bower install
     
 ## Use
