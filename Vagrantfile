@@ -15,9 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Accessing "localhost:35729" will access port 35729 on the guest machine.
     config.vm.network :forwarded_port, guest: 35729, host: 35729
 
-    # Create a public network
-    config.vm.network :public_network
-
     # Install stuff
     config.vm.provision :shell, :path => ".provision/bootstrap.sh", privileged: false
 
